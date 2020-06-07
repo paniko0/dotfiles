@@ -1,0 +1,33 @@
+# Set default editor to Vim.
+set -x EDITOR vim
+set -x VISUAL vim
+
+# US English (UTF-8)
+set -x LC_COLLATE en_US.UTF-8
+set -x LC_CTYPE en_US.UTF-8
+set -x LC_MESSAGES en_US.UTF-8
+set -x LC_MONETARY en_US.UTF-8
+set -x LC_NUMERIC en_US.UTF-8
+set -x LC_TIME en_US.UTF-8
+set -x LC_ALL en_US.UTF-8
+set -x LANG en_US.UTF-8
+set -x LANGUAGE en_US.UTF-8
+set -x LESSCHARSET utf-8
+
+# PATH
+set PATH /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin $PATH
+
+# dotfiles
+set PATH $PATH $HOME/dotfiles/scripts
+
+# Use GNU core utils on macOS if available.
+if test -e /usr/local/opt/coreutils
+  set PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
+end
+
+# Go
+if test -e $HOME/dev/go
+  set -x GOPATH $HOME/dev/go
+  set PATH $PATH $GOPATH/bin
+end
+

@@ -1,0 +1,19 @@
+[user]
+  name = Danillo Souza
+  email = danillo.fs@gmail.com
+[alias]
+  co = checkout
+  st = status
+  ci = commit
+  br = branch
+  uncommit = reset HEAD~
+[github]
+  user = paniko0
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+[core]
+  editor = vim
+  excludesfile = ~/.dotfiles/gitignore_global

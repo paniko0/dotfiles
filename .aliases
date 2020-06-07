@@ -1,0 +1,28 @@
+# Better ls.
+alias lll="ls -lha"
+
+# Human-readable disk usage.
+alias dfh="df -Tha --total"
+
+# Show IP addresses.
+alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+alias whois="whois -h whois-servers.net"
+
+# Show processes.
+alias psg="ps -e -o pid,comm | grep "
+
+# History.
+alias hig="history | grep"
+
+# Find matching files.
+alias lsg='ll | grep'
+
+# Reload shell.
+alias reload="exec $SHELL -l"
+
+# Git grep.
+alias gg='git grep'
+
+# Fast diff for large files.
+alias fdiff='diff --speed-large-files'
