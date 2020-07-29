@@ -120,7 +120,7 @@ doHelp() {
 }
 
 if [ $# -eq 0 ]; then
-    doHelp
+    doAll
 else
     for i in "$@"
     do
