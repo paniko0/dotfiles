@@ -18,7 +18,7 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 # Restart automatically if the computer freezes
-sudo systemsetup -setrestartfreeze on
+# sudo systemsetup -setrestartfreeze on
 
 # Disable smart quotes and dashes
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
