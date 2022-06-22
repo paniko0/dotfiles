@@ -35,8 +35,8 @@ defaults write -g KeyRepeat -int 1
 defaults write .GlobalPreferences com.apple.mouse.scaling -1
 
 # Set language and text formats
-defaults write NSGlobalDomain AppleLanguages -array "en" "nl"
-defaults write NSGlobalDomain AppleLocale -string "en_US@currency=EUR"
+defaults write NSGlobalDomain AppleLanguages -array "en" "pt-br"
+defaults write NSGlobalDomain AppleLocale -string "en_US@currency=CAD"
 defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
 defaults write NSGlobalDomain AppleMetricUnits -bool true
 

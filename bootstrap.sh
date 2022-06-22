@@ -59,6 +59,9 @@ doDirectories() {
 doInstall() {
     info "Installing Extras"
 
+    # Oh-My-Zsh
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
     # plug.vim
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
@@ -76,7 +79,7 @@ doFonts() {
         mkdir -p "$fonts"
     fi
 
-    $DOTFILES/fonts/firacode.sh    
+    $DOTFILES/fonts/firacode.sh
     find "$DOTFILES/fonts/" -name "*.[o,t]tf" -type f | while read -r file
     do
         cp -v "$file" "$fonts"
@@ -95,8 +98,15 @@ doConfig() {
     fi
 }
 
+doBrew() {
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    brew tap Homebrew/bundle
+    brew bundle --file=Brewfile
+}
+
 doAll() {
     doUpdate
+    doBrew
     doSync
     doGitConfig
     doDirectories
@@ -137,6 +147,7 @@ else
                 ;;
             -i|--install)
                 doInstall
+                doBrew
                 shift
                 ;;
             -f|--fonts)
