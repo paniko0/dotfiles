@@ -8,6 +8,8 @@ brew "postgresql"
 brew "graphviz"
 brew "tmux"
 brew "docker"
+brew "libpq"
+brew "reattach-to-user-namespace"
 
 # Casks
 cask 'google-chrome'
