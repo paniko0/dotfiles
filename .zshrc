@@ -74,6 +74,8 @@ plugins=(
   rake
   ruby
   zsh-autosuggestions
+  kubectl
+  terraform
 )
 
 source $ZSH/oh-my-zsh.sh
