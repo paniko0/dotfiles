@@ -50,6 +50,7 @@ doSync() {
 
 doSymLink() {
     mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
+    ln -s .aerospace.toml $HOME/.aerospace.toml
 }
 
 doDirectories() {
