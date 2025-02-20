@@ -94,6 +94,9 @@ export NVM_DIR="$HOME/.nvm"
 # Flutter
 export PATH=$PATH:/usr/lib/flutter/bin
 
+# Ruby
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment

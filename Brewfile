@@ -12,6 +12,14 @@ brew "reattach-to-user-namespace" # tmux yank
 brew "asdf"
 brew "neovim"
 
+# Ruby dependencies
+brew 'openssl@3'
+brew 'readline'
+brew 'libyaml'
+brew 'gmp'
+brew 'autoconf'
+brew 'rust' # Ruby 3.2 and above requires the Rust compiler if you want to have YJIT enabled
+
 # Casks
 cask 'google-chrome'
 cask 'slack'
