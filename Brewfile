@@ -20,3 +20,6 @@ cask 'iterm2'
 cask 'tableplus'
 cask 'visual-studio-code'
 cask 'rectangle'
+cask 'zoom'
+cask 'font-fira-code'
+
