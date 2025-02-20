@@ -86,7 +86,10 @@ doFonts() {
     $DOTFILES/fonts/firacode.sh
     find "$DOTFILES/fonts/" -name "*.[o,t]tf" -type f | while read -r file
     do
-        cp -v "$file" "$fonts"
+        # Check if the file does not exist at the destination
+        if [ ! -f "$fonts/$(basename "$file")" ]; then
+            cp -v "$file" "$fonts"
+        fi
     done
 }
 
@@ -103,7 +106,11 @@ doConfig() {
 }
 
 doBrew() {
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    if ! command -v brew &> /dev/null
+    then
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi 
+        
     brew tap Homebrew/bundle
     brew bundle --file=Brewfile
 }

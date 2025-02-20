@@ -59,9 +59,21 @@ defaults write NSGlobalDomain com.apple.springing.delay -float 0
 # Avoid creating .DS_Store files on network volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
-# Show the ~/Library and /Volumes folder
-chflags nohidden ~/Library
-sudo chflags nohidden /Volumes
+# Check if ~/Library is hidden
+if [[ $(ls -ldO ~/Library | grep -o hidden) == "hidden" ]]; then
+    echo "~/Library is hidden. Making it visible..."
+    chflags nohidden ~/Library
+else
+    echo "~/Library is already visible."
+fi
+
+# Check if /Volumes is hidden
+if ls -ldO /Volumes | grep -o hidden; then
+    echo "/Volumes is hidden. Making it visible..."
+    sudo chflags nohidden /Volumes
+else
+    echo "/Volumes is already visible."
+fi
 
 # Expand the following File Info panes
 defaults write com.apple.finder FXInfoPanesExpanded -dict \
