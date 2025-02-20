@@ -76,6 +76,7 @@ plugins=(
   zsh-autosuggestions
   kubectl
   terraform
+  asdf
 )
 
 source $ZSH/oh-my-zsh.sh
