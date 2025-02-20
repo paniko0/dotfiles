@@ -1,7 +1,6 @@
 # Brews
 brew "wget"
 brew "git-crypt"
-brew "rbenv"
 brew "gh"
 brew "shared-mime-info"
 brew "postgresql@13"
@@ -10,6 +9,8 @@ brew "tmux"
 brew "docker"
 brew "libpq"
 brew "reattach-to-user-namespace" # tmux yank
+brew "asdf"
+brew "neovim"
 
 # Casks
 cask 'google-chrome'
