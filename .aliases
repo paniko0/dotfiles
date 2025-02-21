@@ -26,3 +26,10 @@ alias gg='git grep'
 
 # Fast diff for large files.
 alias fdiff='diff --speed-large-files'
+
+# Git
+alias gfr='git fetch && git rebase'
+alias g="git"
+
+# Kube
+alias k="kubectl"
