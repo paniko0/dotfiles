@@ -109,16 +109,23 @@ doBrew() {
     if ! command -v brew &> /dev/null
     then
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    fi 
-        
+    fi
+
     brew tap Homebrew/bundle
     brew bundle --file=Brewfile
+}
+
+doThemes() {
+  echo "ZSH - copying modified af-magic"
+
+  cp $DOTFILES/themes/af-magic.zsh-theme $HOME/.oh-my-zsh/custom/themes/af-magic.zsh-theme
 }
 
 doAll() {
     doUpdate
     doBrew
     doSync
+    doThemes
     doGitConfig
     doDirectories
     doSymLink
@@ -131,6 +138,7 @@ doHelp() {
     echo "Usage: $(basename "$0") [options]" >&2
     echo
     echo "   -s, --sync             Synchronizes dotfiles to home directory"
+    echo "   -t, --themes           Synchronizes themes"
     echo "   -l, --link             Create symbolic links"
     echo "   -i, --install          Install (extra) software"
     echo "   -f, --fonts            Copies font files"
@@ -150,6 +158,10 @@ else
                 doSync
                 doGitConfig
                 doDirectories
+                shift
+                ;;
+            -t|--themes)
+                doThemes
                 shift
                 ;;
             -l|--link)
