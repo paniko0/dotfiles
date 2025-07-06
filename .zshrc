@@ -125,3 +125,4 @@ export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias zshconfig="vim ~/.zshrc"
+source ~/.aliases

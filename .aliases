@@ -33,3 +33,6 @@ alias g="git"
 
 # Kube
 alias k="kubectl"
+
+# Vim
+alias v="nvim"

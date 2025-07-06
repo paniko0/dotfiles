@@ -50,7 +50,9 @@ doSync() {
 
 doSymLink() {
     mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
-    ln -s .aerospace.toml $HOME/.aerospace.toml
+    ln -sf $DOTFILES/.zshrc $HOME/.zshrc
+    ln -sf $DOTFILES/.aerospace.toml $HOME/.aerospace.toml
+    ln -sf $DOTFILES/.aliases $HOME/.aliases
 }
 
 doDirectories() {
@@ -116,7 +118,7 @@ doBrew() {
 }
 
 doThemes() {
-  echo "ZSH - copying modified af-magic"
+  info "ZSH - copying modified af-magic"
 
   cp $DOTFILES/themes/af-magic.zsh-theme $HOME/.oh-my-zsh/custom/themes/af-magic.zsh-theme
 }
