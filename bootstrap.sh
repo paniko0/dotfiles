@@ -53,6 +53,8 @@ doSymLink() {
     ln -sf $DOTFILES/.zshrc $HOME/.zshrc
     ln -sf $DOTFILES/.aerospace.toml $HOME/.aerospace.toml
     ln -sf $DOTFILES/.aliases $HOME/.aliases
+    ln -sf $DOTFILES/.mise.toml $HOME/.mise.toml
+    ln -sf $DOTFILES/.alacritty.toml $HOME/.alacritty.toml
 }
 
 doDirectories() {
@@ -73,6 +75,20 @@ doInstall() {
 
     # tmux Plugin Manager
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    ~/.tmux/plugins/tpm/scripts/install_plugins.sh
+
+    # Install Neovim
+    DEST="${XDG_CONFIG_HOME:-$HOME/.config}/nvim"
+    #Remove existing directory if it exists
+    [ -d "$DEST" ] && rm -rf "$DEST"
+    git clone https://github.com/paniko0/kickstart.nvim.git "$DEST"
+
+    # Alacritty themes
+    mkdir -p $HOME/.config/alacritty
+    curl -LO --output-dir $HOME/.config/alacritty https://github.com/catppuccin/alacritty/raw/main/catppuccin-macchiato.toml
+
+    # Install programming languages
+    mise install
 }
 
 doFonts() {

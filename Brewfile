@@ -8,7 +8,7 @@ brew "graphviz"
 brew "tmux"
 brew "libpq"
 brew "reattach-to-user-namespace" # tmux yank
-brew "asdf"
+brew "mise"
 brew "neovim"
 
 # Ruby dependencies
@@ -36,10 +36,12 @@ cask 'google-chrome'
 cask 'slack'
 cask 'spotify'
 cask 'iterm2'
+cask 'alacritty'
 cask 'tableplus'
 cask 'visual-studio-code'
 cask 'rectangle'
 cask 'zoom'
 cask 'font-fira-code'
-cask 'docker'
+cask 'docker-desktop'
+cask 'font-fira-code-nerd-font'
 

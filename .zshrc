@@ -76,7 +76,7 @@ plugins=(
   zsh-autosuggestions
   kubectl
   terraform
-  asdf
+  mise
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -95,8 +95,8 @@ export NVM_DIR="$HOME/.nvm"
 # Flutter
 export PATH=$PATH:/usr/lib/flutter/bin
 
-# Ruby
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+# Mise
+eval "$(mise activate zsh)"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
