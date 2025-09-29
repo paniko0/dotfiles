@@ -44,4 +44,5 @@ cask 'zoom'
 cask 'font-fira-code'
 cask 'docker-desktop'
 cask 'font-fira-code-nerd-font'
+cask 'zen'
 
