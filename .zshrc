@@ -126,3 +126,4 @@ eval "$(mise activate zsh)"
 
 alias zshconfig="vim ~/.zshrc"
 source ~/.aliases
+source ~/.exports.local

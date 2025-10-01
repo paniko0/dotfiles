@@ -31,3 +31,5 @@ if test -e $HOME/dev/go
   set PATH $PATH $GOPATH/bin
 end
 
+source $HOME/.exports.local
+

@@ -39,7 +39,11 @@ doSync() {
         --exclude "scripts/" \
         --exclude "tmux.terminfo" \
         --filter=':- .gitignore' \
+        --filter='.exports' \
+        --filter='.exports.local' \ # so variables are not overwritten if the script runs again
         -avh --no-perms . ~;
+
+    cp -n .exports.local $HOME/.exports.local
 
     # Copy files that have different locations on macOS and Linux.
     if [ -d "$HOME/Library/Application Support/Code/User/" ]; then
@@ -55,6 +59,7 @@ doSymLink() {
     ln -sf $DOTFILES/.aliases $HOME/.aliases
     ln -sf $DOTFILES/.mise.toml $HOME/.mise.toml
     ln -sf $DOTFILES/.alacritty.toml $HOME/.alacritty.toml
+    ln -sf $DOTFILES/.exports $HOME/.exports
 }
 
 doDirectories() {
