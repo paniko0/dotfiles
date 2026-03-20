@@ -8,7 +8,13 @@ general.import = [
 
 [font]
 size = 18.0
-normal = { family = "FiraCode Nerd Font", style = "Regular" }
+normal = { family = "FiraCode Nerd Font", style = "Retina" }
+
+[keyboard]
+bindings = [
+  { key = "Right", mods = "Alt", chars = "\u001BF" },
+  { key = "Left",  mods = "Alt", chars = "\u001BB" },
+]
 
 [env]
 TERM = "xterm-256color"

@@ -126,4 +126,7 @@ eval "$(mise activate zsh)"
 
 alias zshconfig="vim ~/.zshrc"
 source ~/.aliases
+source ~/.aliases.local
 source ~/.exports.local
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"

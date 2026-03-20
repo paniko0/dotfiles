@@ -1,0 +1,12 @@
+# place into ~/.config/ghostty/config
+
+font-family = "FiraCode Nerd Font"
+font-size = 16
+font-style = "Retina"
+
+theme = "Catppuccin Mocha"
+background-opacity = 0.92
+
+macos-titlebar-style = "transparent"
+
+

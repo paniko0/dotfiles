@@ -38,9 +38,15 @@ doSync() {
         --exclude "os/" \
         --exclude "scripts/" \
         --exclude "tmux.terminfo" \
+        --exclude ".exports.local" \
+        --exclude ".exports" \
+        --exclude ".ghostty" \
+        --exclude ".alacritty.toml" \
+        --exclude ".aerospace.toml" \
+        --exclude ".mise.toml" \
+        --exclude ".zshrc" \
+        --exclude ".aliases" \
         --filter=':- .gitignore' \
-        --filter='.exports' \
-        --filter='.exports.local' \ # so variables are not overwritten if the script runs again
         -avh --no-perms . ~;
 
     cp -n .exports.local $HOME/.exports.local
@@ -54,12 +60,14 @@ doSync() {
 
 doSymLink() {
     mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
+    mkdir -p $HOME/.config/ghostty
     ln -sf $DOTFILES/.zshrc $HOME/.zshrc
     ln -sf $DOTFILES/.aerospace.toml $HOME/.aerospace.toml
     ln -sf $DOTFILES/.aliases $HOME/.aliases
     ln -sf $DOTFILES/.mise.toml $HOME/.mise.toml
     ln -sf $DOTFILES/.alacritty.toml $HOME/.alacritty.toml
     ln -sf $DOTFILES/.exports $HOME/.exports
+    ln -sf $DOTFILES/.ghostty $HOME/.config/ghostty/config
 }
 
 doDirectories() {
@@ -73,13 +81,22 @@ doInstall() {
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
     # ZshAutoSuggestions
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    # Check if zsh-autosuggestions is already installed
+    if [ -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions" ]; then
+        info "zsh-autosuggestions already installed, skipping."
+    else
+        git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    fi
 
     # plug.vim
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
     # tmux Plugin Manager
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    if [ -d ~/.tmux/plugins/tpm ]; then
+        info "tpm already installed, skipping."
+    else
+        git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    fi
     ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 
     # Install Neovim
@@ -134,7 +151,6 @@ doBrew() {
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
 
-    brew tap Homebrew/bundle
     brew bundle --file=Brewfile
 }
 
