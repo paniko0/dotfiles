@@ -13,9 +13,40 @@ doUpdate() {
 }
 
 doGitConfig() {
+    local force="${1:-false}"
+
+    # Skip if .gitconfig already exists and not forced
+    if [ "$force" != "true" ] && [ -f "$HOME/.gitconfig" ]; then
+        info "Git already configured, skipping (use --gitconfig to reconfigure)"
+        return
+    fi
+
     info "Configuring Git"
 
-    # The .gitconfig will be overwritten; reconfigure it.
+    # Try to get the user's full name from the OS
+    if [ "$(uname)" == "Darwin" ]; then
+        OS_NAME=$(id -F 2>/dev/null || echo "")
+    else
+        OS_NAME=$(getent passwd "$USER" 2>/dev/null | cut -d: -f5 | cut -d, -f1 || echo "")
+    fi
+
+    # Prompt for name (pre-filled with OS name if available)
+    if [ -n "$OS_NAME" ]; then
+        read -p "Full name [$OS_NAME]: " GIT_NAME
+        GIT_NAME="${GIT_NAME:-$OS_NAME}"
+    else
+        read -p "Full name: " GIT_NAME
+    fi
+
+    read -p "Email: " GIT_EMAIL
+    read -p "GitHub username: " GIT_GITHUB_USER
+
+    # Generate .gitconfig from template
+    sed -e "s/GIT_USER_NAME/$GIT_NAME/" \
+        -e "s/GIT_USER_EMAIL/$GIT_EMAIL/" \
+        -e "s/GIT_GITHUB_USER/$GIT_GITHUB_USER/" \
+        "$DOTFILES/.gitconfig.template" > "$HOME/.gitconfig"
+
     echo "Configuring global .gitignore"
     git config --global core.excludesfile ~/.gitignore_global
 
@@ -40,6 +71,8 @@ doSync() {
         --exclude "tmux.terminfo" \
         --exclude ".exports.local" \
         --exclude ".exports" \
+        --exclude ".gitconfig" \
+        --exclude ".gitconfig.template" \
         --exclude ".ghostty" \
         --exclude ".alacritty.toml" \
         --exclude ".aerospace.toml" \
@@ -184,6 +217,7 @@ doHelp() {
     echo "   -i, --install          Install (extra) software"
     echo "   -f, --fonts            Copies font files"
     echo "   -c, --config           Configures your system"
+    echo "   -g, --gitconfig        Force reconfigure git identity"
     echo "   -a, --all              Does all of the above"
     echo
     exit 1
@@ -220,6 +254,10 @@ else
                 ;;
             -c|--config)
                 doConfig
+                shift
+                ;;
+            -g|--gitconfig)
+                doGitConfig true
                 shift
                 ;;
             -a|--all)

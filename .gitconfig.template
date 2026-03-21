@@ -1,0 +1,19 @@
+[user]
+  name = GIT_USER_NAME
+  email = GIT_USER_EMAIL
+[alias]
+  co = checkout
+  st = status
+  ci = commit
+  br = branch
+  uncommit = reset HEAD~
+[github]
+  user = GIT_GITHUB_USER
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+[core]
+  editor = vim
+  excludesfile = ~/.dotfiles/gitignore_global
