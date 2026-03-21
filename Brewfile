@@ -3,7 +3,7 @@ brew "wget"
 brew "git-crypt"
 brew "gh"
 brew "shared-mime-info"
-brew "postgresql@13"
+brew "postgresql"
 brew "graphviz"
 brew "tmux"
 brew "libpq"
@@ -45,4 +45,5 @@ cask 'font-fira-code'
 cask 'docker-desktop'
 cask 'font-fira-code-nerd-font'
 cask 'zen'
+cask 'claude-code'
 

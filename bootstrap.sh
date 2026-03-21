@@ -50,6 +50,7 @@ doSync() {
         -avh --no-perms . ~;
 
     cp -n .exports.local $HOME/.exports.local
+    touch $HOME/.aliases.local
 
     # Copy files that have different locations on macOS and Linux.
     if [ -d "$HOME/Library/Application Support/Code/User/" ]; then
@@ -68,6 +69,7 @@ doSymLink() {
     ln -sf $DOTFILES/.alacritty.toml $HOME/.alacritty.toml
     ln -sf $DOTFILES/.exports $HOME/.exports
     ln -sf $DOTFILES/.ghostty $HOME/.config/ghostty/config
+    ln -sf $DOTFILES/.tmux.conf $HOME/.tmux.conf
 }
 
 doDirectories() {
