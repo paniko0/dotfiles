@@ -85,8 +85,12 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 defaults write com.apple.ActivityMonitor IconType -int 5
 
 # Set tile and large size
-defaults write com.apple.dock tilesize -int 32
-defaults write com.apple.dock largesize -int 128
+defaults write com.apple.dock tilesize -int 24
+defaults write com.apple.dock largesize -int 60
+defaults write com.apple.dock magnification -bool true
+
+# Restart Dock to apply changes
+killall Dock
 
 # Show all processes in Activity Monitor
 defaults write com.apple.ActivityMonitor ShowCategory -int 0
